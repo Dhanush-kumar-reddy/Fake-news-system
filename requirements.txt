@@ -1,9 +1,13 @@
 fastapi
 uvicorn
-streamlit
-tensorflow
+tensorflow-macos
+tensorflow-metal
+transformers
+torch
 scikit-learn
 pandas
 numpy
+streamlit
 requests
+python-multipart
 pydantic
