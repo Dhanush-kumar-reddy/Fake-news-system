@@ -1,6 +1,5 @@
 import streamlit as st
 import requests
-import pandas as pd
 
 # =====================================================
 # PAGE CONFIG
@@ -34,9 +33,11 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # =====================================================
-# API URL
+# RENDER API URL
 # =====================================================
-API_URL = "http://127.0.0.1:8000/predict"
+API_URL = "https://fake-news-system-3wcv.onrender.com/predict"
+
+HEALTH_URL = "https://fake-news-system-3wcv.onrender.com/health"
 
 # =====================================================
 # TITLE
@@ -44,8 +45,8 @@ API_URL = "http://127.0.0.1:8000/predict"
 st.title("📰 Fake News Detection System")
 
 st.markdown("""
-This application detects whether a news article is
-**Real** or **Fake** using a Deep Learning BiLSTM model.
+Detect whether a news article is **Real** or **Fake**
+using a Deep Learning BiLSTM model.
 """)
 
 # =====================================================
@@ -72,7 +73,7 @@ st.sidebar.write("- TensorFlow")
 # =====================================================
 try:
 
-    health = requests.get("http://127.0.0.1:8000/health")
+    health = requests.get(HEALTH_URL)
 
     if health.status_code == 200:
         st.sidebar.success("🟢 API Connected")
@@ -83,7 +84,7 @@ except:
     st.sidebar.error("🔴 API Offline")
 
 # =====================================================
-# EXAMPLES
+# EXAMPLE BUTTONS
 # =====================================================
 col1, col2 = st.columns(2)
 
@@ -107,7 +108,7 @@ with col2:
         """
 
 # =====================================================
-# TEXT AREA
+# TEXT INPUT
 # =====================================================
 text_input = st.text_area(
     "Enter News Text",
@@ -142,7 +143,8 @@ if st.button("Predict"):
 
                 response = requests.post(
                     API_URL,
-                    json=payload
+                    json=payload,
+                    timeout=60
                 )
 
                 result = response.json()
@@ -158,11 +160,11 @@ if st.button("Predict"):
 
             if prediction == "Real":
 
-                st.success(f"✅ REAL NEWS")
+                st.success("✅ REAL NEWS")
 
             else:
 
-                st.error(f"🚨 FAKE NEWS")
+                st.error("🚨 FAKE NEWS")
 
             # =========================================
             # CONFIDENCE
@@ -175,11 +177,11 @@ if st.button("Predict"):
             # DETAILS
             # =========================================
             st.write(f"**Latency:** {latency} sec")
-            st.write(f"**Model:** BiLSTM v2")
+            st.write("**Model:** BiLSTM v2")
 
         except Exception as e:
 
-            st.error(f"❌ Error connecting to API")
+            st.error("❌ Error connecting to API")
 
             st.exception(e)
 
