@@ -21,13 +21,13 @@ logs/
 
 # Model checkpoints
 *.h5
-*.keras
 
 # Large ML model folders
 models/bert_model/
 models/bert_v1/
 models/bert_v2/
 models/bilstm_v1/
+bilstm_model.keras
 
 # TensorFlow cache
 checkpoint
