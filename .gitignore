@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual Environment
+venv/
+env/
+
+# Mac
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Streamlit
+.streamlit/
+
+# Logs
+*.log
+logs/
+
+# Model checkpoints
+*.h5
+*.keras
+
+# Large ML model folders
+models/bert_model/
+models/bert_v1/
+models/bert_v2/
+
+# TensorFlow cache
+checkpoint
+*.index
+*.data-00000-of-00001
+
+# Dataset files (optional)
+data/Fake.csv
+data/True.csv
+
+# VSCode
+.vscode/
+
+# Environment variables
+.env
+
+# Temporary files
+tmp/
+temp/
