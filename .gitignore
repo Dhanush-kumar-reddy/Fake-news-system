@@ -27,6 +27,7 @@ logs/
 models/bert_model/
 models/bert_v1/
 models/bert_v2/
+models/bilstm_v1/
 
 # TensorFlow cache
 checkpoint
@@ -36,6 +37,7 @@ checkpoint
 # Dataset files (optional)
 data/Fake.csv
 data/True.csv
+data/final_train_v2.csv
 
 # VSCode
 .vscode/
