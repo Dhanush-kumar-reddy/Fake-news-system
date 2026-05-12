@@ -1,7 +1,6 @@
 fastapi
 uvicorn
-tensorflow-macos
-tensorflow-metal
+tensorflow==2.15.0
 transformers
 torch
 scikit-learn
